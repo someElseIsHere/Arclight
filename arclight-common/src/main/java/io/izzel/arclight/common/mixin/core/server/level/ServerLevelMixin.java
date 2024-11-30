@@ -172,6 +172,7 @@ public abstract class ServerLevelMixin extends LevelMixin implements ServerWorld
         this.spigotConfig = new SpigotWorldConfig(worldInfo.getLevelName());
         this.uuid = WorldUUID.getUUID(levelSave.getDimensionPath(this.dimension()).toFile());
         ((ServerChunkProviderBridge) this.chunkSource).bridge$setViewDistance(spigotConfig.viewDistance);
+        if (this.K == null) return;
         ((WorldInfoBridge) this.K).bridge$setWorld((ServerLevel) (Object) this);
         var data = this.getDataStorage().computeIfAbsent(LevelPersistentData::new, () -> new LevelPersistentData(null), "bukkit_pdc");
         this.bridge$getWorld().readBukkitValues(data.getTag());
